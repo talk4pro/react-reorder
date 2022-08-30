@@ -617,7 +617,7 @@
           this.moved = true;
         }
 
-        if (this.isDragging() && this.isInvolvedInDragging()) {
+        if (this.isDragging() && this.isInvolvedInDragging() && this.state.draggedStyle !== null) {
           this.preventNativeScrolling(event);
 
           var element = this.rootNode;
