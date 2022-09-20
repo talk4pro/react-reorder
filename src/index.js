@@ -617,7 +617,7 @@
           this.moved = true;
         }
 
-        if (this.isDragging() && this.isInvolvedInDragging() && this.state.draggedStyle !== null) {
+        if (this.isDragging() && this.isInvolvedInDragging()) {
           this.preventNativeScrolling(event);
 
           var element = this.rootNode;
@@ -644,8 +644,10 @@
 
           }
 
-          this.state.draggedStyle.transform = createOffsetStyles(event, this.props);
-          store.setDraggedStyle(this.props.reorderId, this.props.reorderGroup, this.state.draggedStyle);
+          if(this.state.draggedStyle !== null){
+            this.state.draggedStyle.transform = createOffsetStyles(event, this.props);
+            store.setDraggedStyle(this.props.reorderId, this.props.reorderGroup, this.state.draggedStyle);
+          }
 
           mouseOffset = {
             clientX: event.clientX,
